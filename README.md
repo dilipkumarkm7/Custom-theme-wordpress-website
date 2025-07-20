@@ -26,13 +26,20 @@ dk-theme/
 1. **Install WordPress Locally Using LocalWP**
    - Download from [https://localwp.com](https://localwp.com)
    - Create a new site (e.g., `dk-assignment-site`)
+   
+2. **Create New Site**
+   - Select: **"Custom"** instead of Preferred
+   - Configuration:
+     - **PHP Version**: 8.0 or 8.1
+     - **Web Server**: Nginx
+     - **Database**: MySQL 8.0+
 
-2. **Copy Theme Folder**
+3. **Copy Theme Folder**
    - Navigate to:  
-     `localwp/sites/dk-assignment-site/app/public/wp-content/themes/`
+     `localwp/sites/dk-assignment-site/app/public/wp-content/themes/` or find the "{ }VS Code" btn, by clicking it will navigate to themes folder.
    - Paste your `dk-theme` folder here.
 
-3. **Activate Theme**
+4. **Activate Theme in WordPress Dashboard**
    - Go to WordPress Admin Dashboard → Appearance → Themes
    - Activate **DK Theme**
 
