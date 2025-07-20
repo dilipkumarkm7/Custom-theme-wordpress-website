@@ -4,7 +4,8 @@
 <head>
      <meta charset="<?php bloginfo('charset'); ?>">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     <meta name="description" content="DK Theme - A custom-built, responsive WordPress theme with testimonials and optimized performance.">
+     <meta name="description"
+          content="DK Theme - A custom-built, responsive WordPress theme with testimonials and optimized performance.">
      <?php wp_head(); ?>
 </head>
 
@@ -56,14 +57,15 @@
                Scroll to know more
           </div>
      </div>
-     <div class="testimonials">
+     <!-- <div class="testimonials">
           <h2 class="testimonials-heading">Testimonials</h2>
           <div class="testimonial-container">
                <?php
                $args = array('post_type' => 'testimonial', 'posts_per_page' => 3);
                $testimonials = new WP_Query($args);
                if ($testimonials->have_posts()):
-                    while ($testimonials->have_posts()): $testimonials->the_post(); ?>
+                    while ($testimonials->have_posts()):
+                         $testimonials->the_post(); ?>
                          <div class="testimonial">
                               <h3 class="testimonial-title"><?php the_title(); ?></h3>
                               <p class="testimonial-content"><?php the_excerpt(); ?></p>
@@ -73,7 +75,36 @@
                endif;
                ?>
           </div>
+     </div> -->
+     <div class="testimonials">
+          <h2 class="testimonials-heading">Testimonials</h2>
+          <div class="testimonial-container">
+               <?php
+               $args = array(
+                    'post_type' => 'testimonial',
+                    'posts_per_page' => 3,
+                    'post_status' => 'publish'
+               );
+               $testimonials = new WP_Query($args);
+
+               if ($testimonials->have_posts()):
+                    while ($testimonials->have_posts()):
+                         $testimonials->the_post(); ?>
+
+                         <div class="testimonial">
+                              <h3 class="testimonial-title"><?php the_title(); ?></h3>
+                              <p class="testimonial-content"><?php the_excerpt(); ?></p>
+                         </div>
+
+                    <?php endwhile;
+                    wp_reset_postdata();
+               else:
+                    echo '<p class="testimonial-empty">No testimonials found.</p>';
+               endif;
+               ?>
+          </div>
      </div>
      <?php get_footer(); ?>
 </body>
+
 </html>
